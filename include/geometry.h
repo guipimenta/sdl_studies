@@ -46,6 +46,7 @@ private:
 
 
 void Circle::draw(SDL_Renderer* renderer)  {
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
     int32_t dx = 0, dy = radius, err = 3 - 2 * radius;
 
     while (dy >= dx) {

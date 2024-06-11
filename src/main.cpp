@@ -25,13 +25,14 @@ public:
         circleX += 5;
         if (dotx > width) {
             dotx = 0;
+            circleX = 150;
             gameCanvas.clear();
         }
     }
 
     void render() override {
         gameCanvas.render();
-        SDL_Delay(500);
+        SDL_Delay(50);
     }
 private:
     int dotx=0, doty=10;
