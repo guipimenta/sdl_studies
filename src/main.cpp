@@ -18,10 +18,11 @@ public:
         Point dot3(dotx, doty + 1);
         gameCanvas.draw(&dot3);
 
-        Circle c(150, 150, 50);
+        Circle c(circleX, circleY, 50);
         gameCanvas.draw(&c);
         
         dotx += 5;
+        circleX += 5;
         if (dotx > width) {
             dotx = 0;
             gameCanvas.clear();
@@ -34,6 +35,7 @@ public:
     }
 private:
     int dotx=0, doty=10;
+    int circleX = 150, circleY = 150;
 
 };
 
