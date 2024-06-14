@@ -27,8 +27,7 @@ void Point::draw(SDL_Renderer* renderer) {
         std::cout << "Could not draw point: " << SDL_GetError() << std::endl;
     } else {
         std::cout << "Point drawn at (" << x << ", " << y << ")" << std::endl;
-    }
-    SDL_RenderPresent(renderer);    
+    } 
 }
 
 class Circle : public Shape {
@@ -67,5 +66,4 @@ void Circle::draw(SDL_Renderer* renderer)  {
         }
         dx += 1;
     }
-    SDL_RenderPresent(renderer);
 };

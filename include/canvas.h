@@ -35,7 +35,11 @@ private:
 };
 
 void Canvas::init() {
-    SDL_Init(SDL_INIT_VIDEO);
+    SDL_SetHint(SDL_HINT_RENDER_DRIVER, "opengl");
+    if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO) != 0) {
+        std::cout << "SDL could not initialize! SDL_Error: " << SDL_GetError() << std::endl;
+        return;
+    }
     this->window = SDL_CreateWindow(title.c_str(),
                                             SDL_WINDOWPOS_CENTERED,
                                             SDL_WINDOWPOS_CENTERED,
@@ -48,5 +52,14 @@ void Canvas::init() {
         return;
     }
 
+
+
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
+
+    SDL_RendererInfo info;
+    SDL_GetRendererInfo(renderer, &info);
+    if (info.flags & SDL_RENDERER_SOFTWARE) {
+        std::cout << "Software renderer" << std::endl;
+    }
+    SDL_Log("Renderer: %s", info.name);
 }

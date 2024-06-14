@@ -22,6 +22,8 @@ public:
     virtual void handleEvents() = 0;
     
     virtual void clean() = 0;
+
+    virtual void keydown(SDL_Event e) = 0;
     
     bool running() { 
         return isRunning && !quit; 
@@ -52,6 +54,10 @@ public:
 
     virtual void clean() override;
 
+    virtual void keydown(SDL_Event e) override;
+
+    
+
 protected:
     Canvas gameCanvas;
         const int width;
@@ -69,10 +75,19 @@ void SimpleGameEngine::run() {
     gameCanvas.init();
     isRunning = true;
     signal(SIGINT, signalHandler);
+    SDL_Event e;
     while (running()) {
+        if (SDL_PollEvent( & e)) {
+            if (e.type == SDL_QUIT) {
+                isRunning = false;
+            } else if (e.type == SDL_KEYDOWN) {
+                keydown(e);
+            }
+        }
         handleEvents();
         update();
         render();
+
     }
     clean();
 };
@@ -91,4 +106,8 @@ void SimpleGameEngine::handleEvents() {
 
 void SimpleGameEngine::clean() {
     // clean up
+}
+
+void SimpleGameEngine::keydown(SDL_Event e) {
+    // Handle keydown events
 }

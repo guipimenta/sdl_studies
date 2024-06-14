@@ -8,31 +8,40 @@ public:
     Dots(const std::string& title, int width, int height) 
     : SimpleGameEngine(title, width, height)  {}
 
-    void update() override {        
-        Point dot(dotx, doty);
-        gameCanvas.draw(&dot);
-
-        Point dot2(dotx, doty + 1);
-        gameCanvas.draw(&dot2);
-
-        Point dot3(dotx, doty + 1);
-        gameCanvas.draw(&dot3);
-
+    void update() override {
+        gameCanvas.clear();
         Circle c(circleX, circleY, 50);
         gameCanvas.draw(&c);
-        
-        dotx += 5;
-        circleX += 5;
-        if (dotx > width) {
-            dotx = 0;
-            circleX = 150;
-            gameCanvas.clear();
-        }
+
     }
 
     void render() override {
         gameCanvas.render();
-        SDL_Delay(50);
+    }
+
+    void keydown(SDL_Event e) override {
+        switch (e.key.keysym.sym) {
+            case SDLK_UP:
+                SDL_Log("UP");
+                circleY -= 5;
+                break;
+            case SDLK_DOWN:
+                SDL_Log("DOWN");
+                circleY += 5;
+                // Handle down arrow key
+                break;
+            case SDLK_LEFT:
+                SDL_Log("LEFT");
+                circleX -= 5;
+                // Handle left arrow key
+                break;
+            case SDLK_RIGHT:
+                SDL_Log("RIGHT");
+                circleX += 5;
+                // Handle right arrow key
+                break;
+            // Add more keys as needed...
+        }
     }
 private:
     int dotx=0, doty=10;
