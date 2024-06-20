@@ -1,5 +1,24 @@
 {
-    "Label": "Run",
-    "type": "shell",
-    "command": "./build/SDL_Project"
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Run",
+            "type": "shell",
+            "command": "./build/SDL_Project"
+        },
+        {
+            
+            "label": "build",  
+            "type": "shell",
+            "command": "cmake --build ${workspaceFolder}/build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        }
+    ]
 }
+
+
+
