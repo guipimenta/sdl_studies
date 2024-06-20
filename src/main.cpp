@@ -3,14 +3,14 @@
 #include "game.h"
 #include "geometry.h"
 
-class Dots : public SimpleGameEngine  {
+class Dots : public Blocks::SimpleGameEngine  {
 public:
     Dots(const std::string& title, int width, int height) 
     : SimpleGameEngine(title, width, height)  {}
 
     void update() override {
         gameCanvas.clear();
-        Circle c(circleX, circleY, 50);
+        Blocks::Circle c(circleX, circleY, 50);
         gameCanvas.draw(&c);
 
     }

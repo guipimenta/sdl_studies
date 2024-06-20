@@ -2,6 +2,7 @@
 
 #include <SDL.h>
 
+namespace Blocks {
 
 class Shape {
 public:
@@ -30,6 +31,7 @@ void Point::draw(SDL_Renderer* renderer) {
     } 
 }
 
+
 class Circle : public Shape {
 public:
     Circle(int x, int y, int radius) : x(x), y(y), radius(radius) {};
@@ -40,8 +42,6 @@ private:
     int y;
     int radius;
 };
-
-
 
 
 void Circle::draw(SDL_Renderer* renderer)  {
@@ -66,4 +66,6 @@ void Circle::draw(SDL_Renderer* renderer)  {
         }
         dx += 1;
     }
+};
+
 };

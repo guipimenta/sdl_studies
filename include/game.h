@@ -3,6 +3,8 @@
 #include "canvas.h"
 #include <signal.h>
 
+namespace Blocks {
+
 volatile sig_atomic_t quit = 0;
 
 void signalHandler(int signal) {
@@ -59,7 +61,7 @@ public:
     
 
 protected:
-    Canvas gameCanvas;
+    Blocks::Canvas gameCanvas;
         const int width;
     const int height;
 
@@ -111,3 +113,6 @@ void SimpleGameEngine::clean() {
 void SimpleGameEngine::keydown(SDL_Event e) {
     // Handle keydown events
 }
+
+};
+

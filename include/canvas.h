@@ -3,7 +3,7 @@
 #include <string>
 #include "geometry.h"
 
-
+namespace Blocks {
 
 class Canvas {
 public:
@@ -52,8 +52,6 @@ void Canvas::init() {
         return;
     }
 
-
-
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_SOFTWARE);
 
     SDL_RendererInfo info;
@@ -63,3 +61,6 @@ void Canvas::init() {
     }
     SDL_Log("Renderer: %s", info.name);
 }
+
+
+};
