@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include "geometry.h"
+#include "font.h"
 
 namespace Blocks {
 
@@ -17,6 +18,10 @@ public:
 
     void draw(Shape* shape) {
         shape->draw(renderer);
+    }
+
+    void draw(Font* font) {
+        font->draw(renderer);
     }
 
     void render() {

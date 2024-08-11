@@ -2,6 +2,7 @@
 #include <iostream>
 #include "game.h"
 #include "geometry.h"
+#include "font.h"
 
 class Dots : public Blocks::SimpleGameEngine  {
 public:
@@ -10,7 +11,10 @@ public:
 
     void update() override {
         gameCanvas.clear();
+        Blocks::Font f("a.txt", 5, 5);
+        gameCanvas.draw(&f);
         Blocks::Circle c(circleX, circleY, 50);
+        gameCanvas.draw(&c);
         gameCanvas.draw(&c);
 
     }

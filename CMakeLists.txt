@@ -8,7 +8,7 @@ if(${CMAKE_SYSTEM_NAME} MATCHES "Darwin")
 endif()
 
 # Set the C++ standard
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 
 # Find SDL2
 find_package(SDL2 REQUIRED)
@@ -27,3 +27,17 @@ target_include_directories(SDL_Project PRIVATE /usr/include/SDL2 ${CMAKE_CURRENT
 
 # Link SDL2 library
 target_link_libraries(SDL_Project ${SDL2_LIBRARIES})
+
+set(SOURCE_DIR "${CMAKE_SOURCE_DIR}/assets")
+set(DEST_DIR "${CMAKE_BINARY_DIR}/assets")
+
+add_custom_command(
+    OUTPUT ${DEST_DIR}
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${SOURCE_DIR} ${DEST_DIR}
+    COMMENT "Copying assets to build directory"
+)
+
+add_custom_target(
+    copy_assets ALL
+    DEPENDS ${DEST_DIR}
+)
