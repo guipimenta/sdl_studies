@@ -33,6 +33,10 @@ public:
         SDL_RenderClear(renderer);
     }
 
+    SDL_Renderer* getRenderer() {
+        return renderer;
+    }
+
 private:
     std::string title;
     SDL_Window *window;
